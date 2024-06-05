@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Touch100k: A Large-Scale Touch-Language-Vision Dataset for Touch-Centric Multimodal Representation">
+    <meta name="keywords" content="Touch-Centric Multimodal">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Touch100k</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="images/touch.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+    <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/3.27.0/gradio.js"></script>
+  </head>
+
+  <style>
+    .expandable-card .card-text-container {
+      max-height: 200px;
+      overflow-y: hidden;
+      position: relative;
+    }
+
+    .expandable-card.expanded .card-text-container {
+      max-height: none;
+    }
+
+    .expand-btn {
+      position: relative;
+      display: none;
+      background-color: rgba(255, 255, 255, 0.8);
+      /* margin-top: -20px; */
+      /* justify-content: center; */
+      color: #510c75;
+      border-color: transparent;
+    }
+
+    .expand-btn:hover {
+      background-color: rgba(200, 200, 200, 0.8);
+      text-decoration: none;
+      border-color: transparent;
+      color: #510c75;
+    }
+
+    .expand-btn:focus {
+      outline: none;
+      text-decoration: none;
+    }
+
+    .expandable-card:not(.expanded) .card-text-container:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 90px;
+      background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 1));
+    }
+
+    .expandable-card:not(.expanded) .expand-btn {
+      margin-top: -40px;
+    }
+
+    .card-body {
+      padding-bottom: 5px;
+    }
+
+    .vertical-flex-layout {
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .figure-img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .adjustable-font-size {
+      font-size: calc(0.5rem + 2vw);
+    }
+
+    #gradio pre {
+      background-color: transparent;
+    }
+  </style>
+
+  <body>
+
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">Touch100k:</h1>
+              <h1 class="title is-2 publication-title">A Large-Scale Touch-Language-Vision Dataset for Touch-Centric Multimodal Representation</h1>
+              <div class="is-size-5 publication-authors">
+                <br>
+                <span class="author-block">
+                  <a style="font-weight:normal;">Ning Cheng<sup>1</sup></a>,
+                </span>
+                <span class="author-block">
+                  <a style="font-weight:normal;">Changhao Guan<sup>1</sup></a>,
+                </span>
+                <span class="author-block">
+                  <a style="font-weight:normal;">Jing Gao<sup>1</sup></a>,
+                </span>
+                <span class="author-block">
+                  <a style="font-weight:normal;">Weihao Wang<sup>1</sup></a>,
+                </span>
+                <span class="author-block">
+                  <a style="font-weight:normal;">You Li<sup>1</sup></a>,
+                </span>
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?hl=en&user=sA8U4S0AAAAJ" style="font-weight:normal;">Fandong Meng<sup>2</sup></a>,
+                </span>
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?hl=en&user=S1tit3AAAAAJ" style="font-weight:normal;">Jie Zhou<sup>2</sup></a>,
+                </span>
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?user=5G47IcIAAAAJ&hl=zh-CN" style="font-weight:normal;">Bin Fang<sup>3</sup></a>,
+                </span>
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?user=wMuW0W4AAAAJ&hl=en" style="font-weight:normal;">Jinan Xu<sup>1</sup></a>,
+                </span>
+                <span class="author-block">
+                    <a href="https://winniehan.github.io/" style="font-weight:normal;">Wenjuan Han<sup>1</sup></a>
+                </span>
+              </div>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <sup>1 </sup>Beijing Jiaotong University &nbsp;
+                </span>
+                <span class="author-block">
+                  <sup>2 </sup> WeChat AI, Tencent Inc. &nbsp;
+                </span>
+                <span class="author-block">
+                  <sup>3 </sup> Beijing University of Posts and Telecommunications
+                </span>
+              </div>
+              
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="https://drive.google.com/drive/folders/1QOvbkIZtpJpz4Ry_Zg3ouXX-zLJNqu9m?usp=sharing" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-database"></i>
+                      </span>
+                      <span>Dataset</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="https://github.com/xiaoen0/Touch100k" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section"  style="background-color:#efeff081" id="Abstract">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-six-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Touch holds a pivotal position in enhancing the perceptual and interactive capabilities of both humans and robots. 
+                Despite its significance, current tactile research mainly focuses on visual and tactile modalities, overlooking the language domain. 
+                Inspired by this insight, we construct Touch100k, a paired touch-language-vision dataset at the scale of 100k, featuring tactile sensation descriptions 
+                in multiple granularities (i.e., <em>sentence-level</em> natural expressions with rich semantics, including contextual and dynamic relationships, 
+                and <em>phrase-level</em> descriptions capturing the key features of tactile sensations). Based on the dataset, we propose a pre-training method, 
+                Touch-Language-Vision Representation Learning through Curriculum Linking (TLV-Link, for short), inspired by the concept of curriculum learning. TLV-Link aims 
+                to learn a tactile representation for the GelSight sensor and capture the relationship between tactile, language, and visual modalities. 
+                We evaluate our model's performance across two task categories (namely, material property identification and robot grasping prediction), 
+                focusing on tactile representation and zero-shot touch understanding. The experimental results demonstrate that TLV-Link achieves significant advancements, 
+                establishing a new state-of-the-art performance in touch-centric multimodal representation learning. Additionally, the results validate the efficacy of the constructed Touch100k dataset.        
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="credit">
+      <p>
+        Credit: The design of this project page references the project pages of 
+        <a href="https://github.com/nerfies/nerfies.github.io" class="credit-link">Nerfies</a>.
+      </p>    
+    </section>
+
+  </body>
+
+</html>
