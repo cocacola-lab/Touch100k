@@ -3,10 +3,10 @@
 
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="Touch100k: A Large-Scale Touch-Language-Vision Dataset for Touch-Centric Multimodal Representation">
+    <meta name="description" content="Linking Touch, Language, and Vision: Learning Tactile Representation through Curriculum Guidance and Semantic Alignment">
     <meta name="keywords" content="Touch-Centric Multimodal">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Touch100k</title>
+    <title>TLV-Link</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="index.css">
-    <link rel="icon" href="images/touch.png">
+    <link rel="icon" href="images/logo.jpg">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -103,12 +103,15 @@
         <div class="container is-max-desktop">
           <div class="columns is-centered">
             <div class="column has-text-centered">
-              <h1 class="title is-1 publication-title">Touch100k:</h1>
-              <h1 class="title is-2 publication-title">A Large-Scale Touch-Language-Vision Dataset for Touch-Centric Multimodal Representation</h1>
+              <h1 class="title is-1 publication-title"><img id="logo" width="6%" src="images/logo.jpg" style="vertical-align: bottom; margin-right: 10px;">Linking Touch, Language, and Vision:</h1>
+              <h1 class="title is-2 publication-title">Learning Tactile Representation through Curriculum Guidance and Semantic Alignment</h1>
               <div class="is-size-5 publication-authors">
                 <br>
                 <span class="author-block">
                   <a style="font-weight:normal;">Ning Cheng<sup>1</sup></a>,
+                </span>
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?user=wMuW0W4AAAAJ&hl=en" style="font-weight:normal;">Jinan Xu<sup>1</sup></a>,
                 </span>
                 <span class="author-block">
                   <a style="font-weight:normal;">Changhao Guan<sup>1</sup></a>,
@@ -132,9 +135,6 @@
                   <a href="https://scholar.google.com/citations?user=5G47IcIAAAAJ&hl=zh-CN" style="font-weight:normal;">Bin Fang<sup>3</sup></a>,
                 </span>
                 <span class="author-block">
-                  <a href="https://scholar.google.com/citations?user=wMuW0W4AAAAJ&hl=en" style="font-weight:normal;">Jinan Xu<sup>1</sup></a>,
-                </span>
-                <span class="author-block">
                     <a href="https://winniehan.github.io/" style="font-weight:normal;">Wenjuan Han<sup>1</sup></a>
                 </span>
               </div>
@@ -154,15 +154,7 @@
 
               <div class="column has-text-centered">
                 <div class="publication-links">
-                  <span class="link-block">
-                    <a href="https://drive.google.com/drive/folders/1QOvbkIZtpJpz4Ry_Zg3ouXX-zLJNqu9m?usp=sharing" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-database"></i>
-                      </span>
-                      <span>Dataset</span>
-                    </a>
-                  </span>
+
                   <span class="link-block">
                     <a href="https://github.com/cocacola-lab/TLV-Link" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
@@ -172,6 +164,16 @@
                       <span>Code</span>
                     </a>
                   </span>
+                  <span class="link-block">
+                    <a href="https://drive.google.com/drive/folders/1QOvbkIZtpJpz4Ry_Zg3ouXX-zLJNqu9m?usp=sharing" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-database"></i>
+                      </span>
+                      <span>Dataset</span>
+                    </a>
+                  </span>
+        
                 </div>
               </div>
             </div>
@@ -187,16 +189,8 @@
             <h2 class="title is-3">Abstract</h2>
             <div class="content has-text-justified">
               <p>
-                Touch holds a pivotal position in enhancing the perceptual and interactive capabilities of both humans and robots. 
-                Despite its significance, current tactile research mainly focuses on visual and tactile modalities, overlooking the language domain. 
-                Inspired by this insight, we construct Touch100k, a paired touch-language-vision dataset at the scale of 100k, featuring tactile sensation descriptions 
-                in multiple granularities (i.e., <em>sentence-level</em> natural expressions with rich semantics, including contextual and dynamic relationships, 
-                and <em>phrase-level</em> descriptions capturing the key features of tactile sensations). Based on the dataset, we propose a pre-training method, 
-                Touch-Language-Vision Representation Learning through Curriculum Linking (TLV-Link, for short), inspired by the concept of curriculum learning. TLV-Link aims 
-                to learn a tactile representation for the GelSight sensor and capture the relationship between tactile, language, and visual modalities. 
-                We evaluate our model's performance across two task categories (namely, material property identification and robot grasping prediction), 
-                focusing on tactile representation and zero-shot touch understanding. The experimental results demonstrate that TLV-Link achieves significant advancements, 
-                establishing a new state-of-the-art performance in touch-centric multimodal representation learning. Additionally, the results validate the efficacy of the constructed Touch100k dataset.        
+                Touch holds a pivotal position in enhancing the perceptual and interactive capabilities of both humans and robots. Current research on tactile representation mainly focuses on the utilization of visual and tactile modalities, overlooking the language domain, even though language offers rich semantics and has been extensively explored. We thus propose TLV-Link, a pre-training method that links touch, language, and vision to learn a tactile representation for Gelsight sensor by capturing the relationship among these modalities. Specifically, we designate the vision encoder as the teacher model and the touch encoder as the student, guiding tactile representation through the visual modality using an improved curriculum learning approach. Simultaneously, we freeze the text encoder and employ contrastive learning to achieve semantic alignment between the tactile and language modalities. While TLV-Link extends our tactile representation learning beyond the alignment of visual and tactile modalities, we also need a high-quality dataset with aligned data pairs accompanied by language descriptions. We thus propose Touch100k, a paired touch-language-vision dataset at the scale of 100k, featuring tactile sensation descriptions 
+                in multiple granularities (i.e., <em>sentence-level</em> natural expressions with rich semantics, including contextual and dynamic relationships, and <em>phrase-level</em> descriptions capturing the key features of tactile sensations). Moreover, we evaluate our representation's performance across two task categories (namely, material property identification and robot grasping prediction), focusing on tactile representation and zero-shot touch understanding. The experimental evaluation showcases the effectiveness of our representation. By enabling TLV-Link to achieve substantial improvements and establish a new state-of-the-art in touch-centric multimodal representation learning,  Touch100k demonstrates its value as a valuable resource for research.       
               </p>
             </div>
           </div>
