@@ -1,2 +1,2 @@
-# Project Page of TLV-Link
-Linking Touch, Language, and Vision: Learning Tactile Representation through Curriculum Guidance and Semantic Alignment
+# Project Page of Touch100k
+Touch100k: A Large-Scale Touch-Language-Vision Dataset for Touch-Centric Multimodal Representation
